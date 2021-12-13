@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url(https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+header {
+  font-family: poppins;
+  position: relative;
+  top: 2;
+  left: 2;
+  width: 100%;
+  padding: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  gap: 20px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.header li:hover {
+  transition: 0.1sec;
+  color: rgb(44, 255, 1);
+}
+
+header .logo {
+  font-size: 88em;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+header {
+  position: relative;
+  display: flex;
+}
+
+.header {
+  position: relative;
+  display: flex;
+}
+
+.header li a {
+  display: inline-block;
+  color: white;
+  margin: 4px;
+  text-decoration: none;
+}
+
+.content {
+  max-width: 800px;
+  padding: 80px;
+  margin-bottom: 4px;
+}
+
+.content .contentBx h2 {
+  font-size: 4em;
+  color: #fff;
+  line-height: 1em;
+  font-family: poppins;
+}
+
+.content .contentBx p {
+  font-family: poppins;
+  font-size: 1em;
+  color: white;
+  font-weight: 300 px;
+  margin: 20px 0;
+  margin-top: 25px;
+  line-height: normal;
+}
+
+.content .contentBx a {
+  margin: 10px 7px;
+  padding: 7px;
+  background-color: yellow;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-family: poppins, bold;
+}
+
+.content .contentBx button {
+  background-color: rgb(44, 255, 1);
+  padding: 10px 20px;
+
+  color: rgb(0, 0, 0);
+  font-family: poppins;
+}
+
+
+
+
+@media (max-width: 890px) {
+  header {
+    padding: 15px 40px;
+  }
+  section {
+    padding: 40px;
+    background: url(https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+    background-size: cover;
+  }
+
+  .content .contentBx h2 {
+    font-size: 2.5em;
+  }
+
+  .content .contentBx p {
+    font-size: 1.1em;
+  }
+  header {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: bottom;
+    background: rgb(255, 255, 255);
+    z-index: 19;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 255, 0);
+  }
+}
