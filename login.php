@@ -1,3 +1,31 @@
+<?php
+
+$insert = false;
+   include 'connection.php';
+   
+   if(isset($_POST['email']) && ($_POST['password'])){
+     $email= $_POST['email'] ;
+     $password = $_POST['password'];
+
+     $query = "SELECT * FROM `users` WHERE email = '$email' AND password='$password'";
+     
+     $result= mysqli_query($con,$query);
+
+     if(mysqli_num_rows($result)==1){
+       $row = mysqli_fetch_assoc($result);
+       $insert = true;
+
+     }
+
+     
+  // Close the database connection
+  $con->close();
+
+   }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,16 +69,26 @@
         width: 300px;
         padding: 50px;
       }
+
+      .submitmsg{
+        color:red;
+      }
     </style>
     <div id="box">
-      <form action="formpage.php" method="post">
+    <?php  if($insert==true){?>
+
+<?php echo "<h6 class='submitmsg'>You Logged In Successfully</h6>"?>
+<?php }
+
+ ?>
+      <form action="login.php" method="post">
         <div style="font-size: 25px; color: black; margin: 2% 40%">Login</div>
 
         <input
           id="text"
-          type="text"
-          name="user_name"
-          placeholder="UserName"
+          type="email"
+          name="email"
+          placeholder="Email"
         /><br /><br />
         <input
           id="text"
@@ -62,6 +100,8 @@
         <input id="button" type="submit" value="Login" /><br /><br />
 
         <a href="signup.php">Click to Signup</a><br /><br />
+        <a href="index.php">Click here to go back to home page</a>
+
       </form>
     </div>
   </body>

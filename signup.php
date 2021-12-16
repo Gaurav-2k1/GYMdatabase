@@ -1,18 +1,8 @@
 <?php 
 
-   if(isset($_POST['submit'])){
-
-    $server = "localhost";
-    $username = "root";
-    $password = "";
-
-// Create a database connection
-$con = mysqli_connect($server, $username, $password);
-
-// Check for connection success
-if(!$con){
-    die("connection to this database failed due to" . mysqli_connect_error());
-}
+   if(isset($_POST['submit'])){  
+    
+    include 'connection.php';
 
     $username = $_POST['username'];
     $name = $_POST['name'];
@@ -22,39 +12,29 @@ if(!$con){
     $cpassword = $_POST['cpassword'];
 
 
-    $emailquery = "SELECT * from users WHERE email = '$email';";
+    $emailquery = "SELECT * FROM  `users` WHERE email = '$email';";
+    
 
     $query = mysqli_query($con,$emailquery);
 
-    $emailcount=mysqli_num_rows($query);
+    $emailcount = mysqli_num_rows($query);
+   
+    if($emailcount>0){
+      echo "email already exists";
+    }else{
+        if($password == $cpassword){
+          $insertquery = "INSERT INTO `gym`.`users` (`name`, `email`, `username`, `password`) VALUES 
+          ('$name', '$email', '$username', '$password');";
+      
+
+           $iquery = mysqli_query($con,$insertquery);
 
 
-    $insertquery = "INSERT INTO `gym`.`users` ( `name`, `email`, `username`, `password`) VALUES 
-    ( '$name', '$email', '$username', '$password');";
-
-    // if($emailcount>0){
-    //   echo "email already exists";
-    // }else{
-    //     if($password == $cpassword){
-    //         $insertquery = "INSERT INTO `gym`.`users` ( `name`, `email`, `username`, `password`) VALUES 
-    //         ( '$name', '$email', '$username', '$password');";
-
-    //        $iquery = mysqli_query($con,$insertquery);
-
-
-    //     }else{
-    //       echo "please check your password again";
-    //     }
-    // }
-    if($con->query($insertquery) == true){
-      // echo "Successfully inserted";
-
-      // Flag for successful insertion
-      $insert = true;
-  }
-  else{
-      echo "ERROR: $sql <br> $con->error";
-  }
+        }else{
+          echo "please check your password again";
+        }
+    }
+  
 
   // Close the database connection
   $con->close();
@@ -150,9 +130,11 @@ if(!$con){
         /><br /><br />
         
 
-        <input id="button" type="submit" value="SignUp" /><br /><br />
+        <input id="button" type="submit" value="SignUp" name="submit" /><br /><br />
 
         <a href="login.php">Click to Login</a><br /><br />
+        <a href="index.php">Click here to go back to home page</a>
+
       </form>
     </div>
   </body>
